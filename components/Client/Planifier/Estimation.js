@@ -35,7 +35,7 @@ const Estimation = ({ navigation }) => {
             </Pressable>
           </View>
           <View style={{flex: 1}}>
-            <Pressable onPress={() => navigation.navigate('Menu')} style={{alignItems: 'flex-end', marginRight: 20}}>
+            <Pressable onPress={() => navigation.navigate("Menu", {expr: "Planifier"})} style={{alignItems: 'flex-end', marginRight: 20}}>
               <Image 
                 style={{marginTop: 30}}
                 source={require('../../../assets/Menu.png')} 
@@ -95,7 +95,7 @@ const Estimation = ({ navigation }) => {
               marginBottom: 17,
               padding: 8
             }}
-            onPress={() => navigation.navigate("Paiement")}>
+            onPress={() => navigation.navigate("Paiement_Planification")}>
             <Text
               style={{ textAlign: 'center', fontSize: 24, fontWeight: 'bold' }}>
               Valider

@@ -48,29 +48,15 @@ const Connexion = ({ navigation }) => {
       
       signInWithEmailAndPassword(auth, text_email.toString(), text_password.toString())
       .then((userCredential) => {
-        const query = getDoc(doc(db, "Chauffeur", userCredential.user.uid));
-        query.then((doc) => {
-          if(doc.data()){
-            
-            //setDoc(doc(db,"Chauffeur", userCredential.user.uid), { Disponible : true});
-            
-            navigation.reset({ index: 0, routes: [{ name: 'Demande' }]})
-          
-          }else{
-            signOut(auth).then(() => {}).catch((error) => {});
-            onChangeTextEmail("")
-            onChangeTextPassword("")
-            setMargin(109); setErreur(<View style= {{padding: 5}}><Text style={{color: 'white', fontWeight: 'bold', 
-          backgroundColor: '#DC143C', padding: 5, textAlign: 'center'}}>Échec de la connexion.</Text></View>)     
-          }
-        }) 
+        navigation.reset({ index: 0, routes: [{ name: 'Demande' }]})   
       })
       .catch((error) => {
         onChangeTextEmail("")
         onChangeTextPassword("")
         setMargin(109); setErreur(<View style= {{padding: 5}}><Text style={{color: 'white', fontWeight: 'bold', 
           backgroundColor: '#DC143C', padding: 5, textAlign: 'center'}}>Échec de la connexion.</Text></View>)     
-      });
+      }); 
+
     }
   }
 

@@ -60,40 +60,15 @@ const Accueil = ({ navigation }) => {
             position: 'absolute',
             right: 0,
             flex: 1,
-            marginRight: 10,
-            marginTop: 25,
+            marginRight: 20,
+            marginTop: "10%",
           }}
-          onPress={() => navigation.navigate('Menu')}>
-          <View
-            style={{
-              height: 8,
-              width: 8,
-              borderWidth: 1,
-              backgroundColor: 'red',
-              borderRadius: 4,
-              borderColor: 'red',
-              marginLeft: 30,
-            }}
-          />
-
+          onPress={() => navigation.navigate("Menu", {expr: "Accueil"})}>
           <Image source={require('../../../assets/Menu.png')} />
         </Pressable>
       </View>
 
-      <View style={{ flex: 1, paddingRight: 15 }}>
-        <TextInput
-          style={{
-            ...styles.input_and_button,
-            fontSize: 24,
-            fontWeight: 'bold',
-            borderWidth: 1,
-          }}
-          keyboardType="default"
-          placeholder="Destination"
-        />
-      </View>
-
-      <View style={{ flex: 1, flexDirection: 'row' }}>
+      <View style={{ flex: 1, flexDirection: 'row', marginTop : 50}}>
         <View style={{ flex: 1, paddingRight: 25 }}>
           <Pressable
             style={{

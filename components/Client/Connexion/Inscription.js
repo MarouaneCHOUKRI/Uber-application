@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     width: 250,
     borderWidth: 1,
     borderRadius: 10,
-    backgroundColor: 'black',
+    backgroundColor: '#C4C4C4',
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
@@ -115,7 +115,6 @@ const styles = StyleSheet.create({
   button_texte: {
     fontWeight: 'bold',
     fontSize: 24,
-    color: 'white',
     textAlign: 'center',
   },
 });

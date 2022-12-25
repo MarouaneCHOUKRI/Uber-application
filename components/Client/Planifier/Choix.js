@@ -19,9 +19,9 @@ const Choix = ({ navigation }) => {
   const boucle = () => {
     let content = [];
 
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 2; i++) {
       content.push(
-        <Ripple style={{ flex: 1, borderColor: 'black', borderWidth: 1, borderRadius: 15, marginBottom: 20}}  onPress={() => navigation.navigate('Estimation')}>
+        <Ripple style={{ flex: 1, borderColor: 'black', borderWidth: 1, borderRadius: 15, marginBottom: 20}}  onPress={() => navigation.navigate('Recherche_Planification')}>
             
             <View style={{ flex: 1, flexDirection: 'row'}}>
             
@@ -72,7 +72,7 @@ const Choix = ({ navigation }) => {
             marginRight: 20,
             marginTop: 30,
           }}
-          onPress={() => navigation.navigate('Menu')}>
+          onPress={() => navigation.navigate("Menu", {expr: "Planifier"})}>
           <Image source={require('../../../assets/Menu.png')} />
         </Pressable>
       </View>

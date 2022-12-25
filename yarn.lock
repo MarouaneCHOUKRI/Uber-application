@@ -2447,7 +2447,15 @@
   "resolved" "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.5.tgz"
   "version" "15.7.5"
 
-"@types/react-native@~0.67.6":
+"@types/react-native-material-ripple@^0.9.2":
+  "integrity" "sha512-54E51EnQeQ9YowKq76lAxSG4KLXjVRoKoD8d1UQrELa28jkGVUssc9850QzFJYQ2HUiTsjVXsMKsHnJnc/LlsA=="
+  "resolved" "https://registry.npmjs.org/@types/react-native-material-ripple/-/react-native-material-ripple-0.9.2.tgz"
+  "version" "0.9.2"
+  dependencies:
+    "@types/react" "*"
+    "@types/react-native" "*"
+
+"@types/react-native@*", "@types/react-native@~0.67.6":
   "integrity" "sha512-NM6atxrefIXMLE/PyQ1bIQjQ/lWLdls3uVxItzKvNUUVZlGqgn/uGN4MarM9quSf90uSqJYPIAeAgTtBTUjhgg=="
   "resolved" "https://registry.npmjs.org/@types/react-native/-/react-native-0.67.6.tgz"
   "version" "0.67.6"
@@ -4269,6 +4277,11 @@
     "@turf/meta" "6.x"
     "@types/geojson" "7946.0.8"
     "rbush" "^3.0.1"
+
+"geolib@^3.3.3":
+  "integrity" "sha512-YO704pzdB/8QQekQuDmFD5uv5RAwAf4rOUPdcMhdEOz+HoPWD0sC7Qqdwb+LAvwIjXVRawx0QgZlocKYh8PFOQ=="
+  "resolved" "https://registry.npmjs.org/geolib/-/geolib-3.3.3.tgz"
+  "version" "3.3.3"
 
 "get-caller-file@^2.0.1", "get-caller-file@^2.0.5":
   "integrity" "sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg=="

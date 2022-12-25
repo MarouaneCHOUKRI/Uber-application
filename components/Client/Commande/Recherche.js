@@ -1,29 +1,60 @@
 import React from 'react';
-import {
-  StatusBar,
-  StyleSheet,
-  Text,
-  Pressable,
-  View,
-  Image,
-} from 'react-native';
+import { StatusBar, StyleSheet, Text, Pressable, View, Image } from 'react-native';
 import { Dimensions } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import * as Location from 'expo-location';
 
 
-const Recherche = ({ navigation }) => {
+export default function Recherche({navigation, route}) {
   
-  let variable = null;
-  const ref = React.useRef();
+  let variable = null
+  const ref = React.useRef()
+  let location = null
 
-  function accepter(){
-    if(variable && variable.description == ref.current?.getAddressText()){
-      navigation.navigate('Choix', { Destination : variable.description})
-      variable = null;
+  React.useEffect(() => {
+    (async () => {
+    
+      try {
+        let { status } = await Location.requestForegroundPermissionsAsync();
+        location = await Location.getCurrentPositionAsync({})
+      
+      } catch (error) {}  
+    
+    })();
+  
+  }, []);
+
+  function accepter(){    
+
+    if( variable && variable.description == ref.current?.getAddressText() && location){
+      
+      navigation.navigate('Choix', { 
+        Destination : variable.description,
+        Position_latitude : location.coords.latitude,
+        Position_longitude : location.coords.longitude
+      })
+      variable = null
       ref.current?.clear();
-    }
+      ref.current?.setAddressText("")
+    
+    }else if(location == null){
 
+      (async () => {
+          
+        try {
+          
+          location = await Location.getCurrentPositionAsync({})
+        
+        } catch (error) {}  
+      
+      })();
+    
+    }else{
+    
+      alert("Une Erreur S'est Produite.")
+    
+    }
   }
   
   return (
@@ -36,9 +67,9 @@ const Recherche = ({ navigation }) => {
             right: 0,
             flex: 1,
             marginRight: 20,
-            marginTop: 30,
+            marginTop: "10%",
           }}
-          onPress={() => navigation.navigate('Menu')}>
+          onPress={() => navigation.navigate("Menu", {expr: "Commande"})}>
           <Image source={require('../../../assets/Menu.png')} />
         </Pressable>
       </View>
@@ -49,7 +80,6 @@ const Recherche = ({ navigation }) => {
         placeholder='Destination'
         minLength={3}
         suppressDefaultStyles={true}
-        isFocused={(isFocused=null)=>console.log(isFocused)}
         onPress={(data = null) => {
           if(data){
             variable = data;
@@ -88,29 +118,29 @@ const Recherche = ({ navigation }) => {
 
       <View style={{ jusifyContent: 'center', alignItems: 'center', marginTop: 70}}>
       
-      <Image 
-       style={{height: 390, width: 390}}
-       source={require('../../../assets/carte.png')} 
-      />
+        <Image 
+        style={{height: 390, width: 390}}
+        source={require('../../../assets/carte.png')} 
+        />
 
-      </View>
+        </View>
 
-      <View>
-        <Ripple
-          style={{
-            ...styles.button,
-            backgroundColor: 'black',
-            marginRight: 15,
-            marginTop: 100
-          }}
-          onPress={() => accepter()} 
-          rippleContainerBorderRadius={10} rippleColor='white'>
-          <Text
-            style={{ textAlign: 'center', fontSize: 24, fontWeight: 'bold', color: 'white'}}>
-            Valider
-          </Text>
-        </Ripple>
-      </View>
+        <View>
+          <Ripple
+            style={{
+              ...styles.button,
+              backgroundColor: 'black',
+              marginRight: 15,
+              marginTop: 100
+            }}
+            onPress={() => accepter()} 
+            rippleContainerBorderRadius={10} rippleColor='white'>
+            <Text
+              style={{ textAlign: 'center', fontSize: 24, fontWeight: 'bold', color: 'white'}}>
+              Valider
+            </Text>
+          </Ripple>
+        </View>
       
     </View>
   );
@@ -132,5 +162,3 @@ const styles = StyleSheet.create({
     marginBottom: 21,
   },
 });
-
-export default Recherche;

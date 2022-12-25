@@ -28,7 +28,7 @@ const Urgence = ({ navigation }) => {
         <View style={{flexDirection:"row"}}>
           <View style={{flex: 1}}/>
           <View style={{flex: 1}}>
-            <Pressable onPress={() => navigation.navigate('Menu')} style={{alignItems: 'flex-end', marginRight: 20}}>
+            <Pressable onPress={() => navigation.navigate("Menu", {expr: "Course"})} style={{alignItems: 'flex-end', marginRight: 20}}>
               <Image 
                 style={{marginTop: 30}}
                 source={require('../../../assets/Menu.png')} 

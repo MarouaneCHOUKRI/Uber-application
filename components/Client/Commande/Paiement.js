@@ -1,16 +1,13 @@
 import React from 'react';
 import {
-  SafeAreaView,
   StatusBar,
   StyleSheet,
-  Button,
   TextInput,
   Text,
   Pressable,
   View,
   Image,
   ScrollView,
-  FlatList
 } from 'react-native';
 import { Dimensions } from 'react-native';
 import Ripple from 'react-native-material-ripple';
@@ -38,7 +35,7 @@ const Paiement = ({ navigation }) => {
               </Pressable>
             </View>
             <View style={{flex: 1}}>
-              <Pressable onPress={() => navigation.navigate('Menu')} style={{alignItems: 'flex-end', marginRight: 20}}>
+              <Pressable onPress={() => navigation.navigate("Menu", {expr: "Commande"})} style={{alignItems: 'flex-end', marginRight: 20}}>
 
                 <Image 
                   style={{marginTop: 30}}

@@ -24,7 +24,7 @@ const Connexion = ({ navigation }) => {
       <SafeAreaView style={{ jusifyContent: 'center', alignItems: 'center' }}>
         <Image
           source={require('../../../assets/user.png')}
-          style={{ marginTop: 85, height: 150, width: 150}}
+          style={{ marginTop: 145, height: 150, width: 150}}
         />
         <Text style={styles.text_connectez_vous}>Connectez-vous</Text>
         <TextInput
@@ -46,18 +46,14 @@ const Connexion = ({ navigation }) => {
         />
         <Ripple
           style={{ ...styles.button, marginTop: 20 }}
-          onPress={() => navigation.navigate('Accueil')}
-          rippleContainerBorderRadius={10}
-          rippleColor='white'>
+          onPress={() => navigation.navigate('Accueil')}>
           <Text style={styles.button_texte}>Connexion</Text>
         </Ripple>
         <Text style={styles.texte}>mot de passe oublié ?</Text>
 
         <Ripple
           style={{ ...styles.button, marginTop: 30, marginBottom: 129 }}
-          onPress={() => navigation.navigate('Inscription')}
-          rippleContainerBorderRadius={10}
-          rippleColor='white'>
+          onPress={() => navigation.navigate('Inscription')}>
           <Text style={styles.button_texte}>S'inscrire</Text>
         </Ripple>
       </SafeAreaView>
@@ -101,6 +97,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#C4C4C4',
     flex: 1,
   },
   texte: {
@@ -113,7 +110,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 24,
     textAlign: 'center',
-    color: 'white'
   },
 });
 

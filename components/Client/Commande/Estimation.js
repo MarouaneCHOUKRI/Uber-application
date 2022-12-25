@@ -1,29 +1,21 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  Button,
-  TextInput,
-  Text,
-  Pressable,
-  View,
-  Image,
-  ScrollView,
-} from 'react-native';
-import { Dimensions } from 'react-native';
+import { StatusBar, StyleSheet, Text, Pressable, View, Image, ScrollView } from 'react-native';
 import Ripple from 'react-native-material-ripple';
+import Geocoder from 'react-native-geocoding';
 
-const Estimation = ({ navigation }) => {
+
+const Estimation = ({ navigation, route}) => {
+
+  Geocoder.init("AIzaSyCpg1BPjQVgeeNT88z0Jm8jEMT4PEObKDg")
 
   const B = (props) => <Text style={{fontWeight: 'bold'}}>{props.children}</Text>
-
+  
   return (
-    <ScrollView style={{flex: 1}} showsVerticalScrollIndicator={false}>
+    <ScrollView style={{flex: 1, backgroundColor: 'white'}} showsVerticalScrollIndicator={false} stickyHeaderIndices={[1]}>
       
       <StatusBar hidden />
   
-      <View style={{flex: 0.2487}}>
+      <View style={{backgroundColor: 'white'}}>
         
         <View style={{flexDirection:"row"}}>
           <View style={{flex: 1}}>
@@ -35,7 +27,7 @@ const Estimation = ({ navigation }) => {
             </Pressable>
           </View>
           <View style={{flex: 1}}>
-            <Pressable onPress={() => navigation.navigate('Menu')} style={{alignItems: 'flex-end', marginRight: 20}}>
+            <Pressable onPress={() => navigation.navigate("Menu", {expr: "Commande"})} style={{alignItems: 'flex-end', marginRight: 20}}>
               <Image 
                 style={{marginTop: 30}}
                 source={require('../../../assets/Menu.png')} 
@@ -51,64 +43,68 @@ const Estimation = ({ navigation }) => {
 
       </View>
 
-      <View style={{flex: 0.5541, paddingTop: 80.53}}>
-        <View style={{flexDirection:"row", paddingBottom: 27.31}}>
-          <View style={{
-              width: 80,
-              height: 88.16, 
-              borderWidth: 1,
-              marginLeft: 30,
-              backgroundColor: '#C4C4C4',
-              borderColor: '#C4C4C4',}}/>
-        
-          <View style={{marginLeft: 21}}>
-                <Text style={styles.text}><B>Chauffeur :</B> Nom Prénom</Text>
-                <Text style={styles.text}><B>Véhicule :</B> nom</Text>
-                <Text style={styles.text}><B>Plaque :</B> XXXX-XXXX</Text>
-              
+      <View style={{ paddingTop: 70, backgroundColor: 'white'}}>
+        <View style={{flexDirection:"row", paddingBottom: 30}}>
+          
+          <View style={{ flex: 1}}>
+            <Image
+              style={{height: 100, width: 100, margin: 10}}
+              source={require('../../../assets/user.png')}
+            />
           </View>
-        </View>
-        <View style={{borderBottomColor: 'black', borderBottomWidth: 1, marginLeft: 48, marginRight: 47}} />
+        
+          <View style={{marginLeft: 21, marginTop: 10, flex: 2, marginRight: 13}}>
+                <Text style={styles.text}><B>Chauffeur :</B> {route.params.Prénom} {route.params.Nom}</Text>
+                <Text style={styles.text}><B>Véhicule :</B> {route.params.Véhicule}</Text>
+                <Text style={styles.text}><B>Plaque :</B> {route.params.Plaque}</Text>
+          </View>
 
-        <View style={{paddingTop: 23.39}}>
-          <View style={{marginLeft: 30}}>
-            <Text style={{fontSize: 24, marginBottom: 33.06}}><B>Destination :</B> Adresse</Text>
-            <Text style={{fontSize: 24, marginBottom: 33.06}}><B>Durée :</B> 1h30</Text>
-            <Text style={{fontSize: 24, marginBottom: 71.92}}><B>Tarif :</B> XX€</Text>
+        </View>
+        
+        <View style={{borderBottomColor: 'black', borderBottomWidth: 1, marginLeft: 50, marginRight: 50}} />
+
+        <View style={{paddingTop: 24, marginLeft: 20, marginRight: 20, paddingTop: 20, backgroundColor: 'white'}}>
+          
+          <View style={{width: 380}}>
+            <Text style={{fontSize: 15, marginBottom: 30}}><B>Destination :</B> {route.params.Destination}</Text>
+            <Text style={{fontSize: 15, marginBottom: 30}}><B>Durée approximative :</B>  - h</Text>
+            <Text style={{fontSize: 15, marginBottom: 70}}><B>Tarif :</B>  - Francs</Text>
           </View>
         
         </View>
       
-        <View style={{borderBottomColor: 'black', borderBottomWidth: 1, marginLeft: 15, marginRight: 15, marginBottom: 17}}/>
+        <View style={{borderBottomColor: 'black', borderBottomWidth: 1, marginLeft: 15, marginRight: 15, marginBottom: 40}}/>
       
       </View>
 
-      <View style={{flex: 0.197}}>
+      <View style={{backgroundColor: 'white'}}>
       
         <View style={{marginLeft: 15, marginRight: 15}}>
           <Ripple
             style={{
-              backgroundColor: '#C4C4C4',
-              borderRadius: 15,
+              backgroundColor: 'black',
+              borderRadius: 10,
               marginBottom: 17,
               padding: 8
             }}
-            onPress={() => navigation.navigate("Paiement")}>
+            onPress={() => navigation.navigate("Paiement")}
+            rippleContainerBorderRadius={10} rippleColor='white'>
             <Text
-              style={{ textAlign: 'center', fontSize: 24, fontWeight: 'bold' }}>
+              style={{ textAlign: 'center', fontSize: 24, fontWeight: 'bold', color: 'white'}}>
               Valider
             </Text>
           </Ripple>
           <Ripple
             style={{
-              backgroundColor: '#C4C4C4',
-              borderRadius: 15,
+              backgroundColor: 'black',
+              borderRadius: 10,
               padding: 8,
               marginBottom: 26
             }}
-            onPress={() => navigation.goBack()}>
+            onPress={() => navigation.goBack()}
+            rippleContainerBorderRadius={10} rippleColor='white'>
             <Text
-              style={{ textAlign: 'center', fontSize: 24, fontWeight: 'bold'}}>
+              style={{ textAlign: 'center', fontSize: 24, fontWeight: 'bold', color: 'white'}}>
               Annuler
             </Text>
           </Ripple>
@@ -121,7 +117,8 @@ const Estimation = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   text:{
-    fontSize: 18,
+    fontSize: 15,
+    marginBottom: 15
   },
 });
 

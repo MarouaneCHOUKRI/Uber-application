@@ -59,7 +59,7 @@ const Recherche = ({ navigation }) => {
               </Pressable>
             </View>
             <View style={{flex: 1}}>
-              <Pressable onPress={() => navigation.navigate('Menu')} style={{alignItems: 'flex-end', marginRight: 20}}>
+              <Pressable onPress={() => navigation.navigate("Menu", {expr: "Planifier"})} style={{alignItems: 'flex-end', marginRight: 20}}>
 
                 <Image 
                   style={{marginTop: 30}}
@@ -146,7 +146,7 @@ const Recherche = ({ navigation }) => {
               borderRadius: 15,
               padding: 8
             }}
-            onPress={() => navigation.navigate("Choix")}>
+            onPress={() => navigation.navigate("Estimation_Planification")}>
             <Text
               style={{ textAlign: 'center', fontSize: 24, fontWeight: 'bold' }}>
               Valider

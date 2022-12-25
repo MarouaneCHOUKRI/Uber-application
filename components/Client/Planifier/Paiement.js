@@ -38,7 +38,7 @@ const Paiement = ({ navigation }) => {
               </Pressable>
             </View>
             <View style={{flex: 1}}>
-              <Pressable onPress={() => navigation.navigate('Menu')} style={{alignItems: 'flex-end', marginRight: 20}}>
+              <Pressable onPress={() => navigation.navigate("Menu", {expr: "Planifier"})} style={{alignItems: 'flex-end', marginRight: 20}}>
 
                 <Image 
                   style={{marginTop: 30}}
